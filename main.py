@@ -105,7 +105,7 @@ def plot_data_distribution(y_data, title="Data Distribution"):
 
 
 def main():
-    logger.info("--- INDOOR LOCALIZATION SYSTEM (Virtual Solution) ---")
+    logger.info("--- INDOOR LOCALIZATION SYSTEM ---")
 
     # 1. Load Training Data
     train_df = load_data('UJIndoorLoc/trainingData.csv')
@@ -121,7 +121,7 @@ def main():
         # 3. Train the Model
         # k=5 is a standard starting point for k-NN
         logger.info("Training k-NN model (this may take a few seconds)...")
-        model = KNeighborsClassifier(n_neighbors=5, n_jobs=-1)
+        model = KNeighborsClassifier(n_neighbors=5, n_jobs=-1) # '-1' meaning use all processors
         model.fit(X_train, y_train)
         logger.info("Model training complete.")
 
@@ -136,13 +136,13 @@ def main():
         logger.info(f" FINAL ACCURACY ON VALIDATION DATA: {acc * 100:.2f}%")
         logger.info("="*50)
 
-        # Grafic 1: Distribuția datelor de antrenare (Bun pentru documentație - arată volumul de muncă)
+        # Plot 1: Training data distribution
         plot_data_distribution(y_train, title="Training Set")
 
-        # Grafic 2: Performanța modelului (Bun pentru prezentare - arată rezultatele)
+        # Plot 2: Results of the prediction
         plot_confusion_matrix(y_val, y_pred)
 
-        # 5. Save results to a text file (Optional, useful for documentation)
+        # 5. Save results to a text file
         logger.info("Generating classification report...")
         report = classification_report(y_val, y_pred)
         logger.info("\n" + str(report))
@@ -150,7 +150,6 @@ def main():
         # 6. Real-time Simulation Example
         logger.info("[DEMO] Simulating a random user tracking request:")
         random_idx = np.random.randint(0, len(X_val))
-        # Keep feature names to avoid sklearn warning about missing names
         sample = X_val.iloc[[random_idx]]
 
         predicted = model.predict(sample)[0]
