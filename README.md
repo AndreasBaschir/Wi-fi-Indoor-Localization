@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Indoor Localization System (Wi-Fi Fingerprinting)
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
@@ -55,3 +56,7 @@ This project uses the **UJIIndoorLoc** dataset, available at the [UCI Machine Le
 2.  **Model Training:** Training a k-NN classifier on the training set (Wifi Fingerprints).
 3.  **Testing:** Simulating real-time localization by predicting locations on the validation set.
 4.  **Results:** The system outputs the classification report and overall accuracy score.
+=======
+# Wi-fi-Indoor-Localization
+Indoor Positioning System (IPS) based on Wi-Fi Fingerprinting and Machine Learning (k-NN), implemented in Python.
+>>>>>>> 6ad8c9ef82c2a553275a5c47920c7ca6d84f0315
