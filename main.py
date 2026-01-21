@@ -133,7 +133,8 @@ def main():
         # 6. Real-time Simulation Example
         print("\n[DEMO] Simulating a random user tracking request:")
         random_idx = np.random.randint(0, len(X_val))
-        sample = X_val.iloc[random_idx].values.reshape(1, -1)
+        # Keep feature names to avoid sklearn warning about missing names
+        sample = X_val.iloc[[random_idx]]
 
         predicted = model.predict(sample)[0]
         actual = y_val.iloc[random_idx]
