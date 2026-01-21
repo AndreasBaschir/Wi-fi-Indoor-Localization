@@ -1,2 +1,2 @@
 # Wi-fi-Indoor-Localization
-Sistem de localizare indoor bazat pe amprente Wi-Fi (Wi-Fi Fingerprinting) bazat pe predicții utilizând Machine Learning
+Indoor Positioning System (IPS) based on Wi-Fi Fingerprinting and Machine Learning (k-NN), implemented in Python.
