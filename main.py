@@ -63,7 +63,6 @@ def plot_confusion_matrix(y_true, y_pred):
     # Save instead of show, so you can use it in your PDF
     plt.savefig('confusion_matrix.png')
     print("[SUCCESS] Saved 'confusion_matrix.png'")
-    # plt.show() # Uncomment if you want to see it immediately
 
 
 def plot_data_distribution(y_data, title="Data Distribution"):
