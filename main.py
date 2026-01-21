@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import logging
+from datetime import datetime
 
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
@@ -14,7 +15,9 @@ if not logger.handlers:
     _console_handler.setLevel(logging.INFO)
     _console_handler.setFormatter(logging.Formatter('[%(levelname)s] %(message)s'))
 
-    _file_handler = logging.FileHandler('indoor_localization.log', encoding='utf-8')
+    _timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+    _log_filename = f'indoor_localization_{_timestamp}.log'
+    _file_handler = logging.FileHandler(_log_filename, mode='w', encoding='utf-8')
     _file_handler.setLevel(logging.INFO)
     _file_handler.setFormatter(logging.Formatter('%(asctime)s [%(levelname)s] %(message)s', datefmt='%Y-%m-%d %H:%M:%S'))
 
@@ -142,7 +145,7 @@ def main():
         # 5. Save results to a text file (Optional, useful for documentation)
         logger.info("Generating classification report...")
         report = classification_report(y_val, y_pred)
-        logger.info("\n" + report)
+        logger.info("\n" + str(report))
         
         # 6. Real-time Simulation Example
         logger.info("[DEMO] Simulating a random user tracking request:")
