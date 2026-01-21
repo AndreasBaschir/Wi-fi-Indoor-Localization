@@ -14,6 +14,7 @@ The project focuses on a **virtual solution** approach, analyzing pre-collected 
 * **Machine Learning:** Implementation of the **k-Nearest Neighbors (k-NN)** algorithm for classification.
 * **Positioning:** Simultaneous prediction of Building ID and Floor number.
 * **Performance:** Evaluation of model accuracy using standard metrics.
+* **Visualization:** Automatic generation of confusion matrix and data distribution plots for analysis.
 
 ## 🛠️ Technologies Used
 
@@ -22,7 +23,8 @@ The project focuses on a **virtual solution** approach, analyzing pre-collected 
     * `pandas` (Data manipulation and analysis)
     * `scikit-learn` (Machine Learning models and metrics)
     * `numpy` (Numerical computing)
-    * `matplotlib` (Data visualization - optional)
+    * `matplotlib` (Data visualization and plot generation)
+    * `seaborn` (Statistical data visualization)
 
 ## 📂 Dataset
 
@@ -41,7 +43,7 @@ This project uses the **UJIIndoorLoc** dataset, available at the [UCI Machine Le
 
 2.  **Install dependencies:**
     ```bash
-    pip install pandas scikit-learn numpy
+    pip install -r requirements.txt
     ```
 
 3.  **Run the analysis script:**
@@ -51,7 +53,22 @@ This project uses the **UJIIndoorLoc** dataset, available at the [UCI Machine Le
 
 ## 📊 Methodology (Virtual Solution)
 
-1.  **Data Preprocessing:** Cleaning the dataset and mapping Wifi signals to location labels.
-2.  **Model Training:** Training a k-NN classifier on the training set (Wifi Fingerprints).
-3.  **Testing:** Simulating real-time localization by predicting locations on the validation set.
-4.  **Results:** The system outputs the classification report and overall accuracy score.
+1.  **Data Preprocessing:** Cleaning the dataset and mapping Wifi signals to location labels (BUILDINGID-FLOOR format).
+2.  **Model Training:** Training a k-NN classifier (k=5) on the training set (19,937 fingerprints from 520 WAPs).
+3.  **Evaluation:** Predicting locations on the validation set (1,111 samples) and calculating accuracy metrics.
+4.  **Visualization:** Generating data distribution plots and confusion matrix heatmaps.
+5.  **Demo:** Simulating real-time tracking with a random validation sample.
+
+## 📈 Outputs
+
+When you run the script, it generates:
+
+* **Console Output:**
+    * Model training progress
+    * Validation accuracy (~90%)
+    * Detailed classification report (precision, recall, F1-score per location)
+    * Real-time demo prediction result
+
+* **Generated Files:**
+    * `distribution_training_set.png` - Bar chart showing fingerprint distribution across locations
+    * `confusion_matrix.png` - Heatmap showing prediction accuracy per Building-Floor combination
